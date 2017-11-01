@@ -1,22 +1,26 @@
+window.$ = require("jquery");
+window.Vue = require("vue");
+window.dataset = require("./datasources/dataset.js");
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+$(document).ready(function() {
 
-require('./bootstrap');
+    var result = [
+        {'firstname':'james', 'lastname':'holden'},
+        {'firstname':'john', 'lastname':'johnson'}
+    ];
 
-window.Vue = require('vue');
+    console.log("==");
+    console.dir(dataset.data);
+    console.log(dataset.data.logosource);
+    console.log("==");
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+    new Vue({
+        el : "#app",
+        data : {
+            year : 2017,
+            items : result,
+            props : dataset
+        }
+    });
 
-Vue.component('example', require('./components/Example.vue'));
-
-const app = new Vue({
-    el: '#app'
 });
